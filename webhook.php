@@ -1,27 +1,5 @@
 <?php
-
-include ('line-bot-api/php/line-bot.php');
-
-$channelSecret = '551ec4feee0.....43cff0';
 $accessToken = "7qxw2p5f6fuMDQn/g1bm4nc29SFk4kQUQ2KEf3GtKsUxnUUrGEm3ylND+XPJRv4M6Rci3pDmGdXqtRdF2Ff5la2UWS91Bq1ogdzUhjgySYU5TxzSafPKmF0IM7PhbHMbviwM49V+kFKKMmsKjDbAwgdB04t89/1O/w1cDnyilFU=";//copy Channel access token ตอนที่ตั้งค่ามาใส่
-    
-
-$bot = new BOT_API($channelSecret, $access_token);
-	
-if (!empty($bot->isEvents)) {
-		
-	$bot->replyMessageNew($bot->replyToken, json_encode($bot->message));
-
-	if ($bot->isSuccess()) {
-		echo 'Succeeded!';
-		exit();
-	}
-
-	// Failed
-	echo $bot->response->getHTTPStatus . ' ' . $bot->response->getRawBody(); 
-	exit();
-
-}
 
 $content = file_get_contents('php://input');
     $arrayJson = json_decode($content, true);
