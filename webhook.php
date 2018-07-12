@@ -157,6 +157,46 @@ $content = file_get_contents('php://input');
         replyMsg($arrayHeader,$arrayPostData);
     }
 
+    else if(strpos($message,"เงี่ยน") !== false){
+        $i = rand(1,3);            
+        if($i == 1){
+            $image_url = "https://www.picz.in.th/images/2018/07/12/NObpJ2.jpg";
+            $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+            $arrayPostData['messages'][0]['type'] = "image";
+            $arrayPostData['messages'][0]['originalContentUrl'] = $image_url;
+            $arrayPostData['messages'][0]['previewImageUrl'] = $image_url;
+            $arrayPostData['messages'][1]['type'] = "text";
+            $arrayPostData['messages'][1]['text'] = "มาหาหนูมั้ยค่ะ...จุ๊บ";
+            $arrayPostData['messages'][2]['type'] = "sticker";
+            $arrayPostData['messages'][2]['packageId'] = "2";
+            $arrayPostData['messages'][2]['stickerId'] = "172";
+        }
+        else if($i == 2){
+            $image_url = "https://www.picz.in.th/images/2018/07/12/NOji6Q.jpg";
+            $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+            $arrayPostData['messages'][0]['type'] = "image";
+            $arrayPostData['messages'][0]['originalContentUrl'] = $image_url;
+            $arrayPostData['messages'][0]['previewImageUrl'] = $image_url;
+            $arrayPostData['messages'][1]['type'] = "text";
+            $arrayPostData['messages'][1]['text'] = "หนูรอพี่อยู่นะ..";
+            $arrayPostData['messages'][2]['type'] = "sticker";
+            $arrayPostData['messages'][2]['packageId'] = "2";
+            $arrayPostData['messages'][2]['stickerId'] = "158";
+        } else {
+            $image_url = "https://www.picz.in.th/images/2018/07/12/NOjqeW.jpg";
+            $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+            $arrayPostData['messages'][0]['type'] = "image";
+            $arrayPostData['messages'][0]['originalContentUrl'] = $image_url;
+            $arrayPostData['messages'][0]['previewImageUrl'] = $image_url;
+            $arrayPostData['messages'][1]['type'] = "text";
+            $arrayPostData['messages'][1]['text'] = "เงียนมากใช่ป่ะ..เอาอันนี้ใช้แก้เงียนไป๊!!";
+            $arrayPostData['messages'][2]['type'] = "sticker";
+            $arrayPostData['messages'][2]['packageId'] = "1";
+            $arrayPostData['messages'][2]['stickerId'] = "10";
+        }
+        replyMsg($arrayHeader,$arrayPostData);
+    }
+
 
 
 
