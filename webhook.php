@@ -11,7 +11,12 @@ $content = file_get_contents('php://input');
 
     
     //รับข้อความจากผู้ใช้
-    $message = $arrayJson['events'][0]['message']['text'];
+    $mytype = $arrayJson['events'][0]['message']['type'];
+    if($mytype = "text"
+        $message = $arrayJson['events'][0]['message']['text'];
+    else
+       $message = $arrayJson['events'][0]['message']['stickerId'];
+       
 #ตัวอย่าง Message Type "Text"
     if($message == "สวัสดี"){
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
@@ -196,8 +201,13 @@ $content = file_get_contents('php://input');
         }
         replyMsg($arrayHeader,$arrayPostData);
     }
-
-
+    
+       else if($message == "10" || $message == "100" || $message == "110"){
+            $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+            $arrayPostData['messages'][0]['type'] = "text";
+            $arrayPostData['messages'][1]['text'] = "ขำ พ่อง!!";
+            replyMsg($arrayHeader,$arrayPostData);
+       }
 
 
 function replyMsg($arrayHeader,$arrayPostData){
