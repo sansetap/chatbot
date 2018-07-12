@@ -120,7 +120,7 @@ $content = file_get_contents('php://input');
         replyMsg($arrayHeader,$arrayPostData);
     }
 
-    else if($message == "ไม่กิน" || $message == "ไม่หิว"){
+    else if($message == "ไม่กิน" || $message == "ไม่หิว" || $message == "ไม่เอา"){
         $i = rand(1,4);            
         if($i == 1){
             $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
