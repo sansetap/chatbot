@@ -12,11 +12,11 @@ $content = file_get_contents('php://input');
     
     //รับข้อความจากผู้ใช้
     $mytype = $arrayJson['events'][0]['message']['type'];
-    if($mytype = "text"
+    if($mytype = "text"){
         $message = $arrayJson['events'][0]['message']['text'];
-    else
+    } else{
        $message = $arrayJson['events'][0]['message']['stickerId'];
-       
+    }
 #ตัวอย่าง Message Type "Text"
     if($message == "สวัสดี"){
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
