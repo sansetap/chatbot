@@ -201,12 +201,13 @@ $content = file_get_contents('php://input');
         }
         replyMsg($arrayHeader,$arrayPostData);
     }
-    else if ($message == "10" || $message == "100" || $message == "110"){
+    else //if ($message == "10" || $message == "100" || $message == "110")
+    {
             $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
             $arrayPostData['messages'][0]['type'] = "text";
-            $arrayPostData['messages'][0]['text'] = "ขำ พ่อง!!";
+            $arrayPostData['messages'][0]['text'] = "ขำ พ่อง!!".$message;
             replyMsg($arrayHeader,$arrayPostData);
-       }
+     }
 
 
 function replyMsg($arrayHeader,$arrayPostData){
