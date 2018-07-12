@@ -91,6 +91,34 @@ $content = file_get_contents('php://input');
         $arrayPostData['messages'][0]['stickerId'] = "19";
         replyMsg($arrayHeader,$arrayPostData);
     }
+    else if($message == "กินไรดี" || $message == "กินไร" || $message == "หิว"){
+        $i = rand(1,7);
+        $msg = "ไม่รู้ซิ ลูกชิ้นหอยจ้อมั้ง";
+            
+        if($i == 1){
+            $msg = "ข้าวมันไก่";
+        }
+        else if($i == 2){
+            $msg = "ส้มตำ คอหมูย่าง";
+        }
+        else if($i == 3){
+            $msg = "ก๋วยเตี๋ยวเยาวราช";
+        }
+        else if($i == 4){
+            $msg = "ขาหมูบางหว้า";
+        }    
+        else if($i == 5){
+            $msg = "ส้มตำ ไก่วิเชียร";
+        }
+        else if($i == 6){
+            $msg = "บ้านเจ๊ไพ";
+        }
+            
+        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+        $arrayPostData['messages'][0]['type'] = "text";
+        $arrayPostData['messages'][0]['text'] = $msg;
+        replyMsg($arrayHeader,$arrayPostData);
+    }
 
 
 
