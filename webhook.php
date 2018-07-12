@@ -120,6 +120,43 @@ $content = file_get_contents('php://input');
         replyMsg($arrayHeader,$arrayPostData);
     }
 
+    else if($message == "ไม่กิน" || $message == "ไม่หิว"){
+        $i = rand(1,4);            
+        if($i == 1){
+            $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+            $arrayPostData['messages'][0]['type'] = "text";
+            $arrayPostData['messages'][0]['text'] = "งั้นก็ไม่ต้องกิน";
+            $arrayPostData['messages'][1]['type'] = "sticker";
+            $arrayPostData['messages'][1]['packageId'] = "1";
+            $arrayPostData['messages'][1]['stickerId'] = "420";
+        }
+        else if($i == 2){
+            $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+            $arrayPostData['messages'][0]['type'] = "text";
+            $arrayPostData['messages'][0]['text'] = "อดซิ แสดดดด";
+            $arrayPostData['messages'][1]['type'] = "sticker";
+            $arrayPostData['messages'][1]['packageId'] = "2";
+            $arrayPostData['messages'][1]['stickerId'] = "520";
+        }
+        else if($i == 3){
+            $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+            $arrayPostData['messages'][0]['type'] = "text";
+            $arrayPostData['messages'][0]['text'] = "ไปเล่นตรงนู้นเลย!!";
+            $arrayPostData['messages'][1]['type'] = "sticker";
+            $arrayPostData['messages'][1]['packageId'] = "2";
+            $arrayPostData['messages'][1]['stickerId'] = "518";
+        }else {
+            $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+            $arrayPostData['messages'][0]['type'] = "text";
+            $arrayPostData['messages'][0]['text'] = "เรื่องของมุง..";
+            $arrayPostData['messages'][1]['type'] = "sticker";
+            $arrayPostData['messages'][1]['packageId'] = "2";
+            $arrayPostData['messages'][1]['stickerId'] = "170";
+        }
+        
+        replyMsg($arrayHeader,$arrayPostData);
+    }
+
 
 
 
