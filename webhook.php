@@ -168,12 +168,12 @@ $content = file_get_contents('php://input');
 
     else if( strpos($message,"บอท") !== false ){
         $i = rand(1,3);
-        $msg = "เรียกผมหรอครับ";
             
         if($i == 1){
             $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
             $arrayPostData['messages'][0]['type'] = "text";
             $arrayPostData['messages'][0]['text'] = "ว่าไงครับ";
+            replyMsg($arrayHeader,$arrayPostData);
         }
         else if($i == 2){
             $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
@@ -182,12 +182,14 @@ $content = file_get_contents('php://input');
             $arrayPostData['messages'][1]['type'] = "sticker";
             $arrayPostData['messages'][1]['packageId'] = "1";
             $arrayPostData['messages'][1]['stickerId'] = "17";
+            replyMsg($arrayHeader,$arrayPostData);
         } else {
             $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
             $arrayPostData['messages'][0]['type'] = "text";
             $arrayPostData['messages'][0]['text'] =  "เรียกผมหรอครับ";
+            replyMsg($arrayHeader,$arrayPostData);
         }
-        replyMsg($arrayHeader,$arrayPostData);
+        
     }
     
     else if(strpos($message,"นิว?") !== false ){
