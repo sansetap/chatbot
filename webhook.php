@@ -165,28 +165,27 @@ $content = file_get_contents('php://input');
         
         replyMsg($arrayHeader,$arrayPostData);
     }
-    else if(strpos($message,"บอท") !== false ){
+
+    else if( strpos($message,"บอท") !== false ){
         $i = rand(1,3);
         $msg = "เรียกผมหรอครับ";
             
         if($i == 1){
             $msg = "ว่าไงครับ";
-            $arrayPostData['messages'][0]['type'] = "text";
-            $arrayPostData['messages'][0]['text'] = $msg;
         }
         else if($i == 2){
             $msg = "ห๊ะ";
-            $arrayPostData['messages'][0]['type'] = "text";
-            $arrayPostData['messages'][0]['text'] = $msg;
             $arrayPostData['messages'][1]['type'] = "sticker";
             $arrayPostData['messages'][1]['packageId'] = "1";
             $arrayPostData['messages'][1]['stickerId'] = "17";
-        }else {
-            $arrayPostData['messages'][0]['type'] = "text";
-            $arrayPostData['messages'][0]['text'] = $msg;
         }
+        
+        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+        $arrayPostData['messages'][0]['type'] = "text";
+        $arrayPostData['messages'][0]['text'] = $msg;
         replyMsg($arrayHeader,$arrayPostData);
     }
+    
     else if(strpos($message,"นิวคือใคร") !== false ){
         $i = rand(1,3);
         $msg = "นิว คือ คู่ขาเค้าเอง";
@@ -196,7 +195,7 @@ $content = file_get_contents('php://input');
         else if ($i == 2){
             $msg = "นิว คือ ยอดนักขุดทองในตำนาน";
         }
-        
+        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
         $arrayPostData['messages'][0]['type'] = "text";
         $arrayPostData['messages'][0]['text'] = $msg;
         replyMsg($arrayHeader,$arrayPostData);
