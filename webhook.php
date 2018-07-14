@@ -18,7 +18,7 @@ $content = file_get_contents('php://input');
        //$message = $arrayJson['events'][0]['message']['stickerId'];
     //}
 #ตัวอย่าง Message Type "Text"
-    if($message == "สวัสดี"){
+    if( strpos($message,"สวัสดี") !== false || strpos($message,"หวัดดี") !== false ){
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
         $arrayPostData['messages'][0]['type'] = "text";
         $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าาา";
@@ -45,10 +45,10 @@ $content = file_get_contents('php://input');
     else if($message == "พิกัด"){
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
         $arrayPostData['messages'][0]['type'] = "location";
-        $arrayPostData['messages'][0]['title'] = "สยามพารากอน";
+        $arrayPostData['messages'][0]['title'] = "บริษัท มหาโชค มหาชัย เทรดดิ้ง จำกัด";
         $arrayPostData['messages'][0]['address'] =   "13.7465354,100.532752";
-        $arrayPostData['messages'][0]['latitude'] = "13.7465354";
-        $arrayPostData['messages'][0]['longitude'] = "100.532752";
+        $arrayPostData['messages'][0]['latitude'] = "13.6271373";
+        $arrayPostData['messages'][0]['longitude'] = "100.2878033";
         replyMsg($arrayHeader,$arrayPostData);
     }
     #ตัวอย่าง Message Type "Text + Sticker ใน 1 ครั้ง"
@@ -96,8 +96,8 @@ $content = file_get_contents('php://input');
         $arrayPostData['messages'][0]['stickerId'] = "19";
         replyMsg($arrayHeader,$arrayPostData);
     }
-    else if($message == "กินไรดี" || $message == "กินไร" || $message == "หิว"){
-        $i = rand(1,7);
+    else if(strpos($message,"กินไรดี") !== false || strpos($message, "กินไร") !== false || strpos($message, "หิว") !== false ){
+        $i = rand(1,8);
         $msg = "ไม่รู้ซิ ลูกชิ้นหอยจ้อมั้ง";
             
         if($i == 1){
@@ -118,6 +118,10 @@ $content = file_get_contents('php://input');
         else if($i == 6){
             $msg = "บ้านเจ๊ไพ";
         }
+        else if($i == 7){
+            $msg = "เซเว่นมั้ยล่ะ";
+        }
+        
             
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
         $arrayPostData['messages'][0]['type'] = "text";
@@ -125,7 +129,7 @@ $content = file_get_contents('php://input');
         replyMsg($arrayHeader,$arrayPostData);
     }
 
-    else if($message == "ไม่กิน" || $message == "ไม่หิว" || $message == "ไม่เอา"){
+    else if(strpos($message,"ไม่กิน") !== false || strpos($message,"ไม่หิว")!== false || strpos($message,"ไม่เอา" !== false ){
         $i = rand(1,4);            
         if($i == 1){
             $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
@@ -161,47 +165,40 @@ $content = file_get_contents('php://input');
         
         replyMsg($arrayHeader,$arrayPostData);
     }
-
-    else if(strpos($message,"เงี่ยน") !== false){
-        $i = rand(1,3);            
+    else if(strpos($message,"บอท") !== false ){
+        $i = rand(1,3);
+        $msg = "เรียกผมหรอครับ";
+            
         if($i == 1){
-            $image_url = "https://www.picz.in.th/images/2018/07/12/NObpJ2.jpg";
-            $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
-            $arrayPostData['messages'][0]['type'] = "image";
-            $arrayPostData['messages'][0]['originalContentUrl'] = $image_url;
-            $arrayPostData['messages'][0]['previewImageUrl'] = $image_url;
-            $arrayPostData['messages'][1]['type'] = "text";
-            $arrayPostData['messages'][1]['text'] = "มาหาหนูมั้ยค่ะ...จุ๊บ";
-            $arrayPostData['messages'][2]['type'] = "sticker";
-            $arrayPostData['messages'][2]['packageId'] = "2";
-            $arrayPostData['messages'][2]['stickerId'] = "172";
+            $msg = "ว่าไงครับ";
         }
         else if($i == 2){
-            $image_url = "https://www.picz.in.th/images/2018/07/12/NOji6Q.jpg";
-            $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
-            $arrayPostData['messages'][0]['type'] = "image";
-            $arrayPostData['messages'][0]['originalContentUrl'] = $image_url;
-            $arrayPostData['messages'][0]['previewImageUrl'] = $image_url;
-            $arrayPostData['messages'][1]['type'] = "text";
-            $arrayPostData['messages'][1]['text'] = "หนูรอพี่อยู่นะ..";
-            $arrayPostData['messages'][2]['type'] = "sticker";
-            $arrayPostData['messages'][2]['packageId'] = "2";
-            $arrayPostData['messages'][2]['stickerId'] = "158";
-        } else {
-            $image_url = "https://www.picz.in.th/images/2018/07/12/NOjqeW.jpg";
-            $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
-            $arrayPostData['messages'][0]['type'] = "image";
-            $arrayPostData['messages'][0]['originalContentUrl'] = $image_url;
-            $arrayPostData['messages'][0]['previewImageUrl'] = $image_url;
-            $arrayPostData['messages'][1]['type'] = "text";
-            $arrayPostData['messages'][1]['text'] = "เงียนมากใช่ป่ะ..เอาอันนี้ใช้แก้เงียนไป๊!!";
-            $arrayPostData['messages'][2]['type'] = "sticker";
-            $arrayPostData['messages'][2]['packageId'] = "1";
-            $arrayPostData['messages'][2]['stickerId'] = "10";
+            $msg = "ห๊ะ!!";
+            $arrayPostData['messages'][1]['type'] = "sticker";
+            $arrayPostData['messages'][1]['packageId'] = "1";
+            $arrayPostData['messages'][1]['stickerId'] = "17";
         }
+        
+        $arrayPostData['messages'][0]['type'] = "text";
+        $arrayPostData['messages'][0]['text'] = $msg;
         replyMsg($arrayHeader,$arrayPostData);
     }
-
+    else if(strpos($message,"นิว?") !== false ){
+        $i = rand(1,3);
+        $msg = "นิว คือ คู่ขาเค้าเอง";
+        if($i == 1){
+            $msg = "นิว คือ เมียผมครับ";
+        }
+        else if ($i == 2){
+            $msg = "นิว คือ ยอดนักขุดทองในตำนาน";
+        }
+        
+        $arrayPostData['messages'][0]['type'] = "text";
+        $arrayPostData['messages'][0]['text'] = $msg;
+        replyMsg($arrayHeader,$arrayPostData);
+    }
+            
+   
 
 function replyMsg($arrayHeader,$arrayPostData){
         $strUrl = "https://api.line.me/v2/bot/message/reply";
