@@ -171,10 +171,12 @@ $content = file_get_contents('php://input');
         $msg = "เรียกผมหรอครับ";
             
         if($i == 1){
+            $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
             $arrayPostData['messages'][0]['type'] = "text";
             $arrayPostData['messages'][0]['text'] = "ว่าไงครับ";
         }
         else if($i == 2){
+            $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
             $arrayPostData['messages'][0]['type'] = "text";
             $arrayPostData['messages'][0]['text'] = "ห๊ะ";
             $arrayPostData['messages'][1]['type'] = "sticker";
