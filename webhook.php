@@ -175,18 +175,16 @@ $content = file_get_contents('php://input');
             $arrayPostData['messages'][0]['text'] = $msg;
         }
         else if($i == 2){
-            $msg = "ห๊ะ!!";
+            $msg = "ห๊ะ";
+            $arrayPostData['messages'][0]['type'] = "text";
+            $arrayPostData['messages'][0]['text'] = $msg;
             $arrayPostData['messages'][1]['type'] = "sticker";
             $arrayPostData['messages'][1]['packageId'] = "1";
             $arrayPostData['messages'][1]['stickerId'] = "17";
-            $arrayPostData['messages'][0]['type'] = "text";
-            $arrayPostData['messages'][0]['text'] = $msg;
         }else {
             $arrayPostData['messages'][0]['type'] = "text";
             $arrayPostData['messages'][0]['text'] = $msg;
         }
-        
-        
         replyMsg($arrayHeader,$arrayPostData);
     }
     else if(strpos($message,"นิวคือใคร") !== false ){
