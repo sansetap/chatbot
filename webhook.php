@@ -188,7 +188,7 @@ $content = file_get_contents('php://input');
         replyMsg($arrayHeader,$arrayPostData);
     }
     
-    else if(strpos($message,"นิวคือใคร") !== false ){
+    else if(strpos($message,"นิว?") !== false ){
         $i = rand(1,3);
         $msg = "นิว คือ คู่ขาเค้าเอง";
         if($i == 1){
