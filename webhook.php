@@ -206,6 +206,21 @@ $content = file_get_contents('php://input');
         $arrayPostData['messages'][0]['text'] = $msg;
         replyMsg($arrayHeader,$arrayPostData);
     }
+
+    else if(strpos($message,".") !== false ){
+        $i = rand(1,100);
+        $msg = "";
+        if($i%2 == 0){
+            $msg = "ใช่";
+        }else{
+            $msg = "ไม่";   
+        }
+        
+        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+        $arrayPostData['messages'][0]['type'] = "text";
+        $arrayPostData['messages'][0]['text'] = $msg;
+        replyMsg($arrayHeader,$arrayPostData);
+    }
             
    
 
