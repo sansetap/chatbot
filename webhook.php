@@ -18,7 +18,7 @@ $content = file_get_contents('php://input');
        //$message = $arrayJson['events'][0]['message']['stickerId'];
     //}
 #ตัวอย่าง Message Type "Text"
-    if( strpos($message,"สวัสดี") !== false || strpos($message,"หวัดดี") !== false ){
+    if( strpos($message,"สวัสดี") !== false ){
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
         $arrayPostData['messages'][0]['type'] = "text";
         $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าาา";
@@ -96,7 +96,7 @@ $content = file_get_contents('php://input');
         $arrayPostData['messages'][0]['stickerId'] = "19";
         replyMsg($arrayHeader,$arrayPostData);
     }
-    else if(strpos($message,"กินไรดี") !== false || strpos($message, "กินไร") !== false || strpos($message, "หิว") !== false ){
+    else if($message == "กินไรดี" || $message == "กินไร" || $message == "หิว" ){
         $i = rand(1,8);
         $msg = "ไม่รู้ซิ ลูกชิ้นหอยจ้อมั้ง";
             
@@ -129,7 +129,7 @@ $content = file_get_contents('php://input');
         replyMsg($arrayHeader,$arrayPostData);
     }
 
-    else if(strpos($message,"ไม่กิน") !== false || strpos($message,"ไม่หิว")!== false || strpos($message,"ไม่เอา" !== false ){
+    else if($message == "ไม่กิน" || $message == "ไม่หิว" || $message == "ไม่เอา" ){
         $i = rand(1,4);            
         if($i == 1){
             $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
