@@ -267,6 +267,27 @@ $content = file_get_contents('php://input');
         replyMsg($arrayHeader,$arrayPostData);
     }
    
+    else if(strpos($message,"555") !== false ){
+        $i = rand(1,4);
+        $msg = "ไม่ตลก";
+        if($i == 1){
+            $msg = "ตูต้องขำมั้ย";
+        }else if($i == 2) {
+            $msg = "ฮ่าๆๆๆ __มุงซิ";   
+        }else if($i == 3) {
+            $msg = "ฮาซิ รอไร";   
+        }
+        
+        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+        $arrayPostData['messages'][0]['type'] = "text";
+        $arrayPostData['messages'][0]['text'] = $msg;
+        if($i == 3) {
+            $arrayPostData['messages'][1]['type'] = "sticker";
+            $arrayPostData['messages'][1]['packageId'] = "1";
+            $arrayPostData['messages'][1]['stickerId'] = "110";
+        }
+        replyMsg($arrayHeader,$arrayPostData);
+    }
 
 function replyMsg($arrayHeader,$arrayPostData){
         $strUrl = "https://api.line.me/v2/bot/message/reply";
