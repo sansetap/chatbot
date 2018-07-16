@@ -207,7 +207,7 @@ $content = file_get_contents('php://input');
         replyMsg($arrayHeader,$arrayPostData);
     }
 
-    else if(strpos($message,".") !== false ){
+    else if(strpos($message,"?") !== false ){
         $i = rand(1,100);
         $msg = "";
         if($i%2 == 0){
