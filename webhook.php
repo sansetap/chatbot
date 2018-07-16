@@ -221,7 +221,26 @@ $content = file_get_contents('php://input');
         $arrayPostData['messages'][0]['text'] = $msg;
         replyMsg($arrayHeader,$arrayPostData);
     }
-            
+        
+    else if(strpos($message,"กาน") !== false ){
+        $i = rand(1,5);
+        $msg = "ขี้เอา(ใจ)";
+        if($i == 1){
+            $msg = "อ่อน";
+        }else if($i = 2) {
+            $msg = "กะจอก";   
+        }else if($i = 3) {
+            $msg = "กลับบ้านเช้า";   
+        }else if($i = 4) {
+            $msg = "หลุมดำดูดของกิน";   
+        }
+        
+        
+        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+        $arrayPostData['messages'][0]['type'] = "text";
+        $arrayPostData['messages'][0]['text'] = $msg;
+        replyMsg($arrayHeader,$arrayPostData);
+    }
    
 
 function replyMsg($arrayHeader,$arrayPostData){
