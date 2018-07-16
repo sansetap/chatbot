@@ -249,6 +249,23 @@ $content = file_get_contents('php://input');
         $arrayPostData['messages'][0]['stickerId'] = "180";
         replyMsg($arrayHeader,$arrayPostData);
     }
+
+    else if($message == "จริงดิ" ){
+        $i = rand(1,4);
+        $msg = "ไม่จริง";
+        if($i == 1){
+            $msg = "จริงจริ๊ง (เสียงสูง)";
+        }else if($i == 2) {
+            $msg = "มันเป็นมุข 555+";   
+        }else if($i == 3) {
+            $msg = "เชื่อเราหรอ";   
+        }
+        
+        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+        $arrayPostData['messages'][0]['type'] = "text";
+        $arrayPostData['messages'][0]['text'] = $msg;
+        replyMsg($arrayHeader,$arrayPostData);
+    }
    
 
 function replyMsg($arrayHeader,$arrayPostData){
