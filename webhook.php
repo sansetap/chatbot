@@ -241,6 +241,14 @@ $content = file_get_contents('php://input');
         $arrayPostData['messages'][0]['text'] = $msg;
         replyMsg($arrayHeader,$arrayPostData);
     }
+
+    else if(strpos($message,"ที่รัก") !== false ){
+        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+        $arrayPostData['messages'][0]['type'] = "sticker";
+        $arrayPostData['messages'][0]['packageId'] = "3";
+        $arrayPostData['messages'][0]['stickerId'] = "180";
+        replyMsg($arrayHeader,$arrayPostData);
+    }
    
 
 function replyMsg($arrayHeader,$arrayPostData){
