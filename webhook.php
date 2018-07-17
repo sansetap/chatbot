@@ -289,6 +289,127 @@ $content = file_get_contents('php://input');
         replyMsg($arrayHeader,$arrayPostData);
     }
 
+    else if(strpos($message,"กุ้ง") !== false ){
+        $i = rand(1,5);
+        $msg = "พ่อเทพบุตร";
+        if($i == 1){
+            $msg = "หล่อสุดแล้วในนี้";
+        }else if($i == 2) {
+            $msg = "เทพ Database Admin";   
+        }else if($i == 3) {
+            $msg = "หนุ่มในฝัน";   
+        }else if($i == 3) {
+            $msg = "ศักรินทร์";   
+        }
+        
+        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+        $arrayPostData['messages'][0]['type'] = "text";
+        $arrayPostData['messages'][0]['text'] = $msg;
+        replyMsg($arrayHeader,$arrayPostData);
+    }
+    
+    else if(strpos($message,"พี่ชาติ") !== false ){
+        $i = rand(1,4);
+        $msg = "พ่อ ElfZaa";
+        if($i == 1){
+            $msg = "พ่อทุกสถาบัน!!";
+        }else if($i == 2) {
+            $msg = "ผู้ใหญ่ใจดี";   
+        }else if($i == 3) {
+            $msg = "เจอกันร้านพงษ์";   
+        }
+        
+        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+        $arrayPostData['messages'][0]['type'] = "text";
+        $arrayPostData['messages'][0]['text'] = $msg;
+        replyMsg($arrayHeader,$arrayPostData);
+    }
+
+    else if(strpos($message,"มด") !== false ){
+        $i = rand(1,4);
+        $msg = "เจ้าชู้";
+        if($i == 1){
+            $msg = "ไม่ได้หลายใจ แค่หลายคน";
+        }else if($i == 2) {
+            $msg = "หมูมะนาว ในตำนาน";   
+        }else if($i == 3) {
+            $msg = "เมื่อไหร่จะพอ";   
+        }
+        
+        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+        $arrayPostData['messages'][0]['type'] = "text";
+        $arrayPostData['messages'][0]['text'] = $msg;
+        replyMsg($arrayHeader,$arrayPostData);
+    }
+
+    else if(strpos($message,"ไอซ์") !== false ){
+        $i = rand(1,4);
+        $msg = "ผมไม่เล็กนะครับ";
+        if($i == 1){
+            $msg = "สวัสดีครับ คุณครู";
+        }else if($i == 2) {
+            $msg = "ตากล้อง ในตำนาน";   
+        }else if($i == 3) {
+            $msg = "good morning teacher";   
+        }
+        
+        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+        $arrayPostData['messages'][0]['type'] = "text";
+        $arrayPostData['messages'][0]['text'] = $msg;
+        replyMsg($arrayHeader,$arrayPostData);
+    }
+
+    else if(strpos($message,"ดรีม") !== false ){
+        $i = rand(1,4);
+        $msg = "แก็งลูกหมู";
+        if($i == 1){
+            $msg = "ชอบโดนเพื่อนทิ้ง";
+        }else if($i == 2) {
+            $msg = "เค้าคือใคร..";   
+        }else if($i == 3) {
+            $msg = "คนดี 2018";   
+        }
+        
+        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+        $arrayPostData['messages'][0]['type'] = "text";
+        $arrayPostData['messages'][0]['text'] = $msg;
+        replyMsg($arrayHeader,$arrayPostData);
+    }
+
+    else if(strpos($message,"ตาล") !== false ){
+        $i = rand(1,4);
+        $msg = "แก็งลูกหมู อีคน";
+        if($i == 1){
+            $msg = "ชอบทิ้งเพื่อน";
+        }else if($i == 2) {
+            $msg = "อย่านินทา..เค้าอ่านอยู่นะ";   
+        }else if($i == 3) {
+            $msg = "คนทิ้งเพื่อน 2018";   
+        }
+        
+        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+        $arrayPostData['messages'][0]['type'] = "text";
+        $arrayPostData['messages'][0]['text'] = $msg;
+        replyMsg($arrayHeader,$arrayPostData);
+    }
+
+    else if(strpos($message,"ตั้ม") !== false ){
+        $i = rand(1,4);
+        $msg = "ต้นมะละกอในตำนาน";
+        if($i == 1){
+            $msg = "ข้างบ้านที่แสนดี อิอิ";
+        }else if($i == 2) {
+            $msg = "0x100039 ฉันกำลังลำบาก ฉันกำลังลำบาก ฉันกำลังทำใจ ลืมคนที่ฉันรักเขามาก 0x100039";   
+        }else if($i == 3) {
+            $msg = "รางน้ำ ในตำนาน";   
+        }
+        
+        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+        $arrayPostData['messages'][0]['type'] = "text";
+        $arrayPostData['messages'][0]['text'] = $msg;
+        replyMsg($arrayHeader,$arrayPostData);
+    }
+
 function replyMsg($arrayHeader,$arrayPostData){
         $strUrl = "https://api.line.me/v2/bot/message/reply";
         $ch = curl_init();
