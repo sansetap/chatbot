@@ -399,7 +399,7 @@ $content = file_get_contents('php://input');
         if($i == 1){
             $msg = "ข้างบ้านที่แสนดี อิอิ";
         }else if($i == 2) {
-            $msg = "0x100039 ฉันกำลังลำบาก ฉันกำลังลำบาก ฉันกำลังทำใจ ลืมคนที่ฉันรักเขามาก 0x100039";   
+            $msg = " ฉันกำลังลำบาก ฉันกำลังลำบาก ฉันกำลังทำใจ ลืมคนที่ฉันรักเขามาก ";   
         }else if($i == 3) {
             $msg = "รางน้ำ ในตำนาน";   
         }
@@ -416,7 +416,7 @@ $content = file_get_contents('php://input');
         if($i == 1){
             $msg = "ช่างน่านับถือ";
         }else if($i == 2) {
-            $msg = "คนดี 2018 0x100033";   
+            $msg = "คนดี 2018";   
         }else if($i == 3) {
             $msg = "ขอหนมกินโหน่ยยย...";   
         }
@@ -431,13 +431,65 @@ $content = file_get_contents('php://input');
         $i = rand(1,4);
         $msg = "คนนี้ผมนึกถึง...รถถังอ่ะ";
         if($i == 1){
-            $msg ="อีโหด อีบ้าาา!! ตีเจ็บด้วย 0x10009A";
+            $msg ="อีโหด อีบ้าาา!! ตีเจ็บด้วย ";
         }else if($i == 2) {
-            $msg = "คนไม่ดี 2018 0x10009E";
+            $msg = "คนไม่ดี 2018";
         }else if($i == 3) {
             $msg = "ขอหนมกินโหน่ยยย...";
         }
         
+        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+        $arrayPostData['messages'][0]['type'] = "text";
+        $arrayPostData['messages'][0]['text'] = $msg;
+        replyMsg($arrayHeader,$arrayPostData);
+    }
+
+    else if(strpos($message,"เจน") !== false ){
+        $i = rand(1,2);
+        $msg = "แม่หมู";
+        if($i == 1){
+            $msg ="ไม่มีที่ติ";
+        }
+
+        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+        $arrayPostData['messages'][0]['type'] = "text";
+        $arrayPostData['messages'][0]['text'] = $msg;
+        replyMsg($arrayHeader,$arrayPostData);
+    }
+
+    else if(strpos($message,"เจน") !== false ){
+        $i = rand(1,2);
+        $msg = "แม่หมู";
+        if($i == 1){
+            $msg ="ไม่มีที่ติ";
+        }
+
+        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+        $arrayPostData['messages'][0]['type'] = "text";
+        $arrayPostData['messages'][0]['text'] = $msg;
+        replyMsg($arrayHeader,$arrayPostData);
+    }
+
+    else if(strpos($message,"ออย") !== false ){
+        $i = rand(1,2);
+        $msg = "ครูของ...";
+        if($i == 1){
+            $msg ="ยาดองมั้ย";
+        }
+
+        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+        $arrayPostData['messages'][0]['type'] = "text";
+        $arrayPostData['messages'][0]['text'] = $msg;
+        replyMsg($arrayHeader,$arrayPostData);
+    }
+
+    else if(strpos($message,"หมวย") !== false ){
+        $i = rand(1,2);
+        $msg = "คุณครูเอง";
+        if($i == 1){
+            $msg ="ซักโบกมั้ย";
+        }
+
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
         $arrayPostData['messages'][0]['type'] = "text";
         $arrayPostData['messages'][0]['text'] = $msg;
