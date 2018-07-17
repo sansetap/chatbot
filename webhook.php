@@ -410,6 +410,40 @@ $content = file_get_contents('php://input');
         replyMsg($arrayHeader,$arrayPostData);
     }
 
+    else if(strpos($message,"สัน") !== false ){
+        $i = rand(1,4);
+        $msg = "พี่ผมเองครับ";
+        if($i == 1){
+            $msg = "ช่างน่านับถือ";
+        }else if($i == 2) {
+            $msg = "คนดี 2018 0x100033";   
+        }else if($i == 3) {
+            $msg = "ขอหนมกินโหน่ยยย...";   
+        }
+        
+        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+        $arrayPostData['messages'][0]['type'] = "text";
+        $arrayPostData['messages'][0]['text'] = $msg;
+        replyMsg($arrayHeader,$arrayPostData);
+    }
+
+    else if(strpos($message,"แยม") !== false ){
+        $i = rand(1,4);
+        $msg = "คนนี้ผมนึกถึง...รถถังอ่ะ";
+        if($i == 1){
+            $msg ="อีโหด อีบ้าาา!! ตีเจ็บด้วย 0x10009A";
+        }else if($i == 2) {
+            $msg = "คนไม่ดี 2018 0x10009E";
+        }else if($i == 3) {
+            $msg = "ขอหนมกินโหน่ยยย...";
+        }
+        
+        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+        $arrayPostData['messages'][0]['type'] = "text";
+        $arrayPostData['messages'][0]['text'] = $msg;
+        replyMsg($arrayHeader,$arrayPostData);
+    }
+
 function replyMsg($arrayHeader,$arrayPostData){
         $strUrl = "https://api.line.me/v2/bot/message/reply";
         $ch = curl_init();
